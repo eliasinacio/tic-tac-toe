@@ -16,52 +16,52 @@ const optionO = document.getElementById('optionO')
 const options = [optionX, optionO]
 
 function clearGame() {
-    for (pos of allPositions) {
-        pos.innerHTML = ''
-    }
+  for (pos of allPositions) {
+    pos.innerHTML = ''
+  }
 }
 
 function getOption() {
-    for (option of options) {
-        if (option.checked) return option
-    }
+  for (option of options) {
+    if (option.checked) return option
+  }
 }
 
 function clearOption() {
-    for (option of options) {
-        option.checked = false
-    }
+  for (option of options) {
+    option.checked = false
+  }
 }
 
 function switchOption() {
-    if (optionX.checked) {
-        optionX.checked = false
-        optionO.checked = true
-    } else optionX.checked = true
+  if (optionX.checked) {
+    optionX.checked = false
+    optionO.checked = true
+  } else optionX.checked = true
 }
 
 function mark(element) {
-    if (getOption().value === 'x') {
-        element.innerHTML = '&#10060;'
-    } else {
-        element.innerHTML = '&#11093;'
-    }
+  if (getOption().value === 'x') {
+    element.innerHTML = '&#10060;'
+  } else {
+    element.innerHTML = '&#11093;'
+  }
 }
 
 function play() {
-    clearGame()
-    clearOption()
+  clearGame()
+  clearOption()
 
-    for (pos of allPositions) {
-        pos.addEventListener('click', function (event) {
-            if (getOption()) {
-                if (event.target.innerHTML === '') {
-                    mark(event.target)
-                    switchOption()
-                }    
-            }
-        })
-    }
+  for (pos of allPositions) {
+    pos.addEventListener('click', function (event) {
+      if (getOption()) {
+        if (event.target.innerHTML === '') {
+          mark(event.target)
+          switchOption()
+        }
+      }
+    })
+  }
 }
 
 play()
