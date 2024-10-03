@@ -5,10 +5,10 @@
   "name": "tic-tac-toe",
   "description": "Jogo da velha multiplayer",
   "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {},
+  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": ""
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC"
