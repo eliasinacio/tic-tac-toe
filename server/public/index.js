@@ -64,33 +64,43 @@ function checkLine(x, y, z) {
   )
 }
 
+let hasWinner = false
+
 function checkHasWinner() {
   const grid = document.getElementById('grid')
   const winMessage = document.getElementById('winMessage')
 
   if (checkLine(m[0][0], m[0][1], m[0][2])) {
     grid.classList.add('h0')
+    hasWinner = true
     winMessage.style.opacity = 100
   } else if (checkLine(m[1][0], m[1][1], m[1][2])) {
     grid.classList.add('h1')
+    hasWinner = true
     winMessage.style.opacity = 100
   } else if (checkLine(m[2][0], m[2][1], m[2][2])) {
     grid.classList.add('h2')
+    hasWinner = true
     winMessage.style.opacity = 100
   } else if (checkLine(m[0][0], m[1][0], m[2][0])) {
     grid.classList.add('v0')
+    hasWinner = true
     winMessage.style.opacity = 100
   } else if (checkLine(m[0][1], m[1][1], m[2][1])) {
     grid.classList.add('v1')
+    hasWinner = true
     winMessage.style.opacity = 100
   } else if (checkLine(m[0][2], m[1][2], m[2][2])) {
     grid.classList.add('v2')
+    hasWinner = true
     winMessage.style.opacity = 100
   } else if (checkLine(m[2][0], m[1][1], m[0][2])) {
     grid.classList.add('d0')
+    hasWinner = true
     winMessage.style.opacity = 100
   } else if (checkLine(m[0][0], m[1][1], m[2][2])) {
     grid.classList.add('d1')
+    hasWinner = true
     winMessage.style.opacity = 100
   }
 }
@@ -101,7 +111,7 @@ function play() {
 
   for (pos of allPositions) {
     pos.addEventListener('click', function (event) {
-      if (getOption()) {
+      if (getOption() && !hasWinner) {
         if (event.target.innerHTML === '') {
           mark(event.target)
           checkHasWinner()

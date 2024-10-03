@@ -61,7 +61,7 @@ input:checked+label {
 #grid.h0 > #a0:before {
   content: "";
   position: absolute;
-  background: #454545;
+  background: #45454590;
 
   left: -10px;
   border-radius: 5px;
@@ -72,7 +72,7 @@ input:checked+label {
 #grid.h1 > #b0:before {
   content: "";
   position: absolute;
-  background: #454545;
+  background: #45454590;
 
   left: -10px;
   border-radius: 5px;
@@ -83,7 +83,7 @@ input:checked+label {
 #grid.h2 > #c0:before {
   content: "";
   position: absolute;
-  background: #454545;
+  background: #45454590;
 
   left: -10px;
   border-radius: 5px;
@@ -95,7 +95,7 @@ input:checked+label {
 #grid.v0 > #a0:after {
   content: "";
   position: absolute;
-  background: #454545;
+  background: #45454590;
 
   top: -10px;
   border-radius: 5px;
@@ -106,7 +106,7 @@ input:checked+label {
 #grid.v1 > #a1:after {
   content: "";
   position: absolute;
-  background: #454545;
+  background: #45454590;
 
   top: -10px;
   border-radius: 5px;
@@ -117,7 +117,7 @@ input:checked+label {
 #grid.v2 > #a2:after {
   content: "";
   position: absolute;
-  background: #454545;
+  background: #45454590;
 
   top: -10px;
   border-radius: 5px;
@@ -129,7 +129,7 @@ input:checked+label {
 #grid.d0 > #b1:after {
   content: "";
   position: absolute;
-  background: #454545;
+  background: #45454590;
 
   transform: rotate(135deg);
   border-radius: 5px;
@@ -140,7 +140,7 @@ input:checked+label {
 #grid.d1 > #b1:before {
   content: "";
   position: absolute;
-  background: #454545;
+  background: #45454590;
 
   transform: rotate(45deg);
   border-radius: 5px;
