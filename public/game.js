@@ -1,33 +1,22 @@
 export default function createGame() {
   // Remover chamadas que buscam coisas no front, pois esse código será executado no back
   // Em vez disso, construir uma matriz que será retornada pro front e lá sim será mostrado com base na matriz
-
-  const allPositions = document.getElementsByClassName('position')
-
-  const a0 = document.getElementById('a0')
-  const a1 = document.getElementById('a1')
-  const a2 = document.getElementById('a2')
-  const b0 = document.getElementById('b0')
-  const b1 = document.getElementById('b1')
-  const b2 = document.getElementById('b2')
-  const c0 = document.getElementById('c0')
-  const c1 = document.getElementById('c1')
-  const c2 = document.getElementById('c2')
-
-  const m = [
-    [a0, a1, a2],
-    [b0, b1, b2],
-    [c0, c1, c2]
+  
+  const matriz = [
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', ''],
   ]
 
-  const optionX = document.getElementById('optionX')
-  const optionO = document.getElementById('optionO')
-
-  const options = [optionX, optionO]
+  function getPositions () {
+    return matriz
+  }
 
   function clearGame() {
-    for (pos of allPositions) {
-      pos.innerHTML = ''
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        matriz[i][j] = ''
+      }
     }
   }
 
@@ -55,50 +44,43 @@ export default function createGame() {
   }
 
   function checkLine(x, y, z) {
-    console.log(x, y, z)
     return (
-      x.innerText && y.innerText && z.innerText &&
-      x.innerText === y.innerText &&
-      x.innerText === z.innerText &&
-      y.innerText === z.innerText
+      x === y && x === z && y === z && x !== ''
     )
   }
 
   let hasWinner = false
 
   function checkHasWinner() {
-    const grid = document.getElementById('grid')
-    const winMessage = document.getElementById('winMessage')
-
-    if (checkLine(m[0][0], m[0][1], m[0][2])) {
+    if (checkLine(matriz[0][0], matriz[0][1], matriz[0][2])) {
       grid.classList.add('h0')
       hasWinner = true
       winMessage.style.opacity = 100
-    } else if (checkLine(m[1][0], m[1][1], m[1][2])) {
+    } else if (checkLine(matriz[1][0], matriz[1][1], matriz[1][2])) {
       grid.classList.add('h1')
       hasWinner = true
       winMessage.style.opacity = 100
-    } else if (checkLine(m[2][0], m[2][1], m[2][2])) {
+    } else if (checkLine(matriz[2][0], matriz[2][1], matriz[2][2])) {
       grid.classList.add('h2')
       hasWinner = true
       winMessage.style.opacity = 100
-    } else if (checkLine(m[0][0], m[1][0], m[2][0])) {
+    } else if (checkLine(matriz[0][0], matriz[1][0], matriz[2][0])) {
       grid.classList.add('v0')
       hasWinner = true
       winMessage.style.opacity = 100
-    } else if (checkLine(m[0][1], m[1][1], m[2][1])) {
+    } else if (checkLine(matriz[0][1], matriz[1][1], matriz[2][1])) {
       grid.classList.add('v1')
       hasWinner = true
       winMessage.style.opacity = 100
-    } else if (checkLine(m[0][2], m[1][2], m[2][2])) {
+    } else if (checkLine(matriz[0][2], matriz[1][2], matriz[2][2])) {
       grid.classList.add('v2')
       hasWinner = true
       winMessage.style.opacity = 100
-    } else if (checkLine(m[2][0], m[1][1], m[0][2])) {
+    } else if (checkLine(matriz[2][0], matriz[1][1], matriz[0][2])) {
       grid.classList.add('d0')
       hasWinner = true
       winMessage.style.opacity = 100
-    } else if (checkLine(m[0][0], m[1][1], m[2][2])) {
+    } else if (checkLine(matriz[0][0], matriz[1][1], matriz[2][2])) {
       grid.classList.add('d1')
       hasWinner = true
       winMessage.style.opacity = 100
