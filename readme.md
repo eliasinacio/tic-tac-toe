@@ -13,12 +13,4 @@
 
 
 
-
-
-
-
-
-
-
-
-** proxima ideia de jogo: forca
+inspiração: [jogo multiplayer do Filipe Deschamps](https://github.com/filipedeschamps/meu-primeiro-jogo-multiplayer)

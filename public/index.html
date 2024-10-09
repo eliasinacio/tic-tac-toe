@@ -9,30 +9,10 @@
 </head>
 
 <body>
-  <div id="winMessage">
-    <span>You win</span>
-  </div>
-
-  <div id="options">
-    <input type="radio" id="optionX" name="option" value="x"></input>
-    <label for="optionX" class="space">x</label>
-
-    <input type="radio" id="optionO" name="option" value="o"></input>
-    <label for="optionO" class="space">o</label>
-  </div>
-
-  <div id="grid" class="grid">
-    <div id="a0" class="position space"></div>
-    <div id="a1" class="position space"></div>
-    <div id="a2" class="position space"></div>
-    <div id="b0" class="position space"></div>
-    <div id="b1" class="position space"></div>
-    <div id="b2" class="position space"></div>
-    <div id="c0" class="position space"></div>
-    <div id="c1" class="position space"></div>
-    <div id="c2" class="position space"></div>
-  </div>
+  <canvas id="canvas" width="31" height="31"></canvas>
 </body>
-<script src="./game.js"></script>
+
+  <script src="./render.js"></script>
+  <!-- <script src="./game.js"></script> -->
 
 </html>
