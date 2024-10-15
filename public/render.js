@@ -1,5 +1,13 @@
+map = [
+  ['', '', ''],
+  ['', '', ''],
+  ['', '', ''],
+]
+
+selector = [2,0]
+
 const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext("2d")
 
 function drawMap() {
   ctx.fillStyle = "rgb(30, 30, 30)";
@@ -69,7 +77,18 @@ function drawDiagonal(d = 0) {
   }
 }
 
+function drawSelector (x=0, y=0) {
+  x *= 10; y *= 10;
+  ctx.fillStyle = "rgba(200, 30, 30, 0.8)";
+  ctx.fillRect(x + 1, y + 1, 9, 1);
+  ctx.fillRect(x + 1, y + 1, 1, 9);
+  ctx.fillRect(x + 1, y + 9, 9, 1);
+  ctx.fillRect(x + 9, y + 1, 1, 9);
+}
+
 function render(map) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   drawMap();
 
   map.forEach((line, i) => {
@@ -82,10 +101,37 @@ function render(map) {
       }
     })
   });
+
+  drawSelector(selector[0], selector[1])
 }
 
-render([
-  ['x', 'o', 'x'],
-  ['', 'x', 'x'],
-  ['', 'o', ''],
-]);
+render(map)
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
+    selector[1] = selector[1] != 0 ? selector[1]-1 : 0
+    render(map)
+  }
+  if (e.key === 'a' || e.key === 'A' || e.key === 'ArrowLeft') {
+    selector[0] = selector[0] != 0 ? selector[0]-1 : 0
+    render(map)
+  }
+  if (e.key === 's' || e.key === 'S' || e.key === 'ArrowDown') {
+    selector[1] = selector[1] != 2 ? selector[1]+1 : 2
+    render(map)
+  }
+  if (e.key === 'd' || e.key === 'D' || e.key === 'ArrowRight') {
+    selector[0] = selector[0] != 2 ? selector[0]+1 : 2
+    render(map)
+  }
+
+  if (e.key === 'x' || e.key === 'X') {
+    map[selector[1]][selector[0]] = 'x'
+    render(map)
+  }
+
+  if (e.key === 'o' || e.key === 'O') {
+    map[selector[1]][selector[0]] = 'o'
+    render(map)
+  }
+})
