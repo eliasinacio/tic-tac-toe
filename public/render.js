@@ -6,6 +6,16 @@ map = [
 
 selector = [2,0]
 
+playerX = {
+  key: 'x'
+}
+
+playerO = {
+  key: 'o'
+}
+
+players = [playerX, playerO]
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d")
 
@@ -108,6 +118,8 @@ function render(map) {
 render(map)
 
 document.addEventListener('keydown', (e) => {
+  console.log('>>>>', e.key)
+
   if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
     selector[1] = selector[1] != 0 ? selector[1]-1 : 0
     render(map)
@@ -125,13 +137,8 @@ document.addEventListener('keydown', (e) => {
     render(map)
   }
 
-  if (e.key === 'x' || e.key === 'X') {
-    map[selector[1]][selector[0]] = 'x'
-    render(map)
-  }
-
-  if (e.key === 'o' || e.key === 'O') {
-    map[selector[1]][selector[0]] = 'o'
+  if (e.key === 'Enter') {
+    map[selector[1]][selector[0]] = player.key
     render(map)
   }
 })
